@@ -1,0 +1,13 @@
+services:
+  app:
+    container_name: nuxt-app-container
+    image: nuxt-app-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev -- --host
