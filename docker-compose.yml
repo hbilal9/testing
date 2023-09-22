@@ -1,14 +1,13 @@
 version: '3.8'
 services:
-  nodejs:
+  nuxtApp:
     image: nuxt-app
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - .:/var/www/frontend
-      - /var/www/frontend/node_modules
-    command: npm run generate
+    stdin_open: true
+    ports:
+      - "3000:3000"
 
   nginx:
     image: nginx:1.21-alpine
@@ -17,4 +16,4 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - nodejs
+      - nuxtApp
