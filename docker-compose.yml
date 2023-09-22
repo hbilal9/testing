@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/var/www/frontend
-      - /app/node_modules
+      - /var/www/frontend/node_modules
     command: npm run generate
 
   nginx:
